@@ -1,0 +1,5 @@
+/target/
+/postgres_data/
+.mvn/
+*.class
+.DS_Store
