@@ -25,4 +25,11 @@ public class ShoeController {
         repository.save(shoe);
         return "redirect:/"; // 登録が終わったらトップ画面に戻る
     }
+
+    // シューズの編集
+    @PostMapping("/update")
+    public String updateShoe(Shoe shoe){
+        repository.save(shoe);
+        return "redirect:/"; // 登録が終わったらトップ画面に戻る
+    }
 }

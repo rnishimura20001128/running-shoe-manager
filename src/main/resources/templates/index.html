@@ -47,10 +47,84 @@
                         詳細
                     </button>
                     <div class="modal fade" th:id="'detailModal' + ${shoe.id}">
-                        <div class="modal-dialog">
+                        <div class="modal-dialog modal-xl">
                             <div class="modal-content">
-                                <div class="modal-body" th:text="${shoe.brand}">
-                                </div>
+                                <form th:action="@{/update}" method="post">
+                                    <input type="hidden" name="id" th:value="${shoe.id}">
+                                    <div class="modal-body">
+                                        <table>
+                                            <tr>
+                                                <th>
+                                                    ブランド
+                                                </th>
+                                                <th>
+                                                    モデル名
+                                                </th>
+                                                <th>
+                                                    走行距離(km)
+                                                </th>
+                                                <th>
+                                                    状態
+                                                </th>
+                                                <th>
+                                                    購入日
+                                                </th>
+                                                <th>
+                                                    カテゴリ
+                                                </th>
+                                                <th>
+                                                    サイズ(cm)
+                                                </th>
+                                                <th>
+                                                    上限走行距離(km)
+                                                </th>
+                                                <th>
+                                                    プレート有無
+                                                </th>
+                                                <th>
+                                                    メモ
+                                                </th>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="text" name="brand" th:value="${shoe.brand}" class="form-control">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="modelName" th:value="${shoe.modelName}" class="form-control">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="totalDistance" th:value="${shoe.totalDistance}" class="form-control">
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" name="isActive" th:checked="${shoe.isActive}" class="form-check-input">
+                                                    <input type="hidden" name="_isActive" value="on">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="purchasedAt" th:value="${shoe.purchasedAt}" class="form-control">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="category" th:value="${shoe.category}" class="form-control">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="size" th:value="${shoe.size}" class="form-control">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="limitDistance" th:value="${shoe.limitDistance}" class="form-control">
+                                                </td>
+                                                <td>
+                                                    <input type="checkbox" name="hasPlate" th:checked="${shoe.hasPlate}" class="form-check-input">
+                                                    <input type="hidden" name="_hasPlate" value="on">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="memo" th:value="${shoe.memo}" class="form-control">
+                                                </td>                                                   
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="submit" th:value="保存" class="btn btn-primary">
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
