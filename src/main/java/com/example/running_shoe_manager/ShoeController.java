@@ -13,9 +13,15 @@ public class ShoeController {
 
     // トップ画面：シューズ一覧を表示する
     @GetMapping("/")
-    public String index(Model model) {
-        List<Shoe> shoes = repository.findAll();
+    public String index(Model model, @RequestParam (required = false) String search) {
+        List<Shoe> shoes = null;
+        if(search != null && !search.isEmpty()){
+            shoes = repository.findByBrandContainingOrModelNameContaining(search, search);
+        }else{
+            shoes = repository.findAll();
+        }
         model.addAttribute("shoes", shoes);
+        model.addAttribute("search", search);
         return "index"; // index.html を表示する
     }
 
